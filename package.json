@@ -1,8 +1,23 @@
 {
   "name": "apollo-link-refresh-token",
+  "description": "A link to refresh auth tokens on authentication errors",
+  "repository": {
+    "url": "https://github.com/baleeds/apollo-link-refresh-token",
+    "type": "git"
+  },
   "version": "0.1.0",
   "license": "MIT",
-  "author": "Benjamin Leeds",
+  "author": {
+    "name": "Benjamin Leeds",
+    "email": "baleeds@ncsu.edu"
+  },
+  "keywords": [
+    "apollo",
+    "link",
+    "refresh",
+    "access",
+    "oauth"
+  ],
   "main": "dist/index.js",
   "module": "dist/apollo-link-refresh-token.esm.js",
   "typings": "dist/index.d.ts",
