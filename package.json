@@ -5,7 +5,7 @@
     "url": "https://github.com/baleeds/apollo-link-refresh-token",
     "type": "git"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "author": {
     "name": "Benjamin Leeds",
