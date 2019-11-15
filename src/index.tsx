@@ -1,1 +1,1 @@
-export * from 'getRefreshTokenLink';
+export * from './getRefreshTokenLink';
