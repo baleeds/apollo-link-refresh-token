@@ -16,7 +16,10 @@ _Note that your implementation will likely change based on your specific paramet
 
 ```typescript
 import { ApolloClient } from 'apollo-client';
-import { getTokenRefreshLink, FetchNewAccessToken } from 'apollo-link-refresh-token`;
+import {
+  getTokenRefreshLink,
+  FetchNewAccessToken,
+} from 'apollo-link-refresh-token';
 import jwtDecode from 'jwt-decode';
 import { authLink, errorLink, httpLink } from './links';
 
@@ -31,8 +34,7 @@ const isTokenValid = (token: string): boolean => {
   return now.getTime() < decodedToken.exp * 1000;
 };
 
-
-const fetchNewAccessToken: FetchNewAccessToken = async (refreshToken) => {
+const fetchNewAccessToken: FetchNewAccessToken = async refreshToken => {
   if (!process.env.REACT_APP_API_URL) {
     throw new Error(
       '.env.REACT_APP_API_URL must be set to use refresh token link'
@@ -78,7 +80,6 @@ const fetchNewAccessToken: FetchNewAccessToken = async (refreshToken) => {
   }
 };
 
-
 const refreshTokenLink = getRefreshTokenLink({
   authorizationHeaderKey: 'Authorization',
   fetchNewAccessToken,
@@ -95,12 +96,7 @@ const refreshTokenLink = getRefreshTokenLink({
 });
 
 export const client = new ApolloClient({
-  link: ApolloLink.from([
-    authLink,
-    refreshTokenLink,
-    errorLink,
-    httpLink,
-  ]),
+  link: ApolloLink.from([authLink, refreshTokenLink, errorLink, httpLink]),
   cache,
 });
 ```
