@@ -35,14 +35,14 @@ const isTokenValid = (token: string): boolean => {
 };
 
 const fetchNewAccessToken: FetchNewAccessToken = async refreshToken => {
-  if (!process.env.REACT_APP_API_URL) {
+  if (!process.env.YOUR_GRAPHQL_ENDPOINT) {
     throw new Error(
-      '.env.REACT_APP_API_URL must be set to use refresh token link'
+      '.env.YOUR_GRAPHQL_ENDPOINT must be set to use refresh token link'
     );
   }
-
+  
   try {
-    const fetchResult = await fetch(process.env.REACT_APP_API_URL, {
+    const fetchResult = await fetch(process.env.YOUR_GRAPHQL_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -117,3 +117,19 @@ export const client = new ApolloClient({
 | isUnauthenticatedError | (graphQLError: GraphQLError) => boolean                | --      | A function that determines whether the error from the current operation warrants a token refresh. Usually looks for an unauthenticated code.            |
 | onFailedRefresh?       | (error: any) => void                                   | --      | A function to handle errors when the refresh fails.                                                                                                     |
 | onSuccessfulRefresh?   | (refreshToken: string) => void                         | --      | A function to handle successful refresh.                                                                                                                |
+
+## Pull Requests
+
+Fork this repo 
+https://github.com/baleeds/apollo-link-refresh-token 
+git checkout -b "your-feature-or-suggestion"
+
+Create a new pull request with your feature on github.
+
+## Why use apollo link refresh token
+
+All the other apollo refresh token libraries are straight garbo.
+This one isn't much better but at least its garbo that works!
+
+&&
+This Repo comes with free Refreshments!
