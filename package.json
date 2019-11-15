@@ -5,7 +5,7 @@
     "url": "https://github.com/baleeds/apollo-link-refresh-token",
     "type": "git"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": {
     "name": "Benjamin Leeds",
@@ -46,11 +46,7 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
-    "@types/react": "^16.9.11",
-    "@types/react-dom": "^16.9.4",
     "husky": "^3.0.9",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
     "tsdx": "^0.11.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.2"
