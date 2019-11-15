@@ -88,7 +88,11 @@ const refreshTokenLink = getRefreshTokenLink({
   isAccessTokenValid: accessToken => isTokenValid(accessToken),
   isUnauthenticatedError: graphQLError => {
     const { extensions } = graphQLError;
-    if (extensions && extensions.code && extensions.code === 'UNAUTHORIZED') {
+    if (
+      extensions &&
+      extensions.code &&
+      extensions.code === 'UNAUTHENTICATED'
+    ) {
       return true;
     }
     return false;
@@ -112,4 +116,4 @@ export const client = new ApolloClient({
 | isAccessTokenValid     | (accessToken?: string) => boolean                      | --      | A function that takes the access token (from getAccessToken) and returns true if the access token is valid. If the token is valid, refresh won't occur. |
 | isUnauthenticatedError | (graphQLError: GraphQLError) => boolean                | --      | A function that determines whether the error from the current operation warrants a token refresh. Usually looks for an unauthenticated code.            |
 | onFailedRefresh?       | (error: any) => void                                   | --      | A function to handle errors when the refresh fails.                                                                                                     |
-| onSuccessfulRefresh?   | (refreshToken: string) => void                         | --      | A function ot handle successful refresh.                                                                                                                |
+| onSuccessfulRefresh?   | (refreshToken: string) => void                         | --      | A function to handle successful refresh.                                                                                                                |
