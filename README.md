@@ -100,3 +100,16 @@ export const client = new ApolloClient({
   cache,
 });
 ```
+
+## Options
+
+| Option                 | Type                                                   | Default | Description                                                                                                                                             |
+| ---------------------- | ------------------------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| authorizationHeaderKey | string                                                 | --      | Name of the authorization header on your requests. Is used to update the headers before retrying the failed request                                     |
+| fetchNewAccessToken    | (refreshToken: string) => Promise<string \| undefined> | --      | A function returning a promise to fetch and return the new refresh token string.                                                                        |
+| getAccessToken         | () => string \| undefined \| null                      | --      | A function to return the current access token. Is used to ensure that the user should be logged in, and to pass into isAccessTokenValid.                |
+| getRefreshToken        | () => string \| undefined \| null                      | --      | A function to return the current refreshToken. Is used to ensure that refresh is possible. It is passed to fetchNewAccessToken().                       |
+| isAccessTokenValid     | (accessToken?: string) => boolean                      | --      | A function that takes the access token (from getAccessToken) and returns true if the access token is valid. If the token is valid, refresh won't occur. |
+| isUnauthenticatedError | (graphQLError: GraphQLError) => boolean                | --      | A function that determines whether the error from the current operation warrants a token refresh. Usually looks for an unauthenticated code.            |
+| onFailedRefresh?       | (error: any) => void                                   | --      | A function to handle errors when the refresh fails.                                                                                                     |
+| onSuccessfulRefresh?   | (refreshToken: string) => void                         | --      | A function ot handle successful refresh.                                                                                                                |
